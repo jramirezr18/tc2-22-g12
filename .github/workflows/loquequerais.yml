@@ -61,5 +61,8 @@ jobs:
         location: 'europe-central2'
 
     # The KUBECONFIG env var is automatically exported and picked up by kubectl.
-    - id: 'get-pods'
+    - id: 'deployment-kafka'
+      run: 'kubectl apply -f kafka-deployment.yaml'
+      run: 'kubectl wait deployment/kafka --for condition=available --timeout=300s'
       run: 'kubectl get pods'
+ 
