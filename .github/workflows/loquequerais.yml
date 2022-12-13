@@ -66,4 +66,10 @@ jobs:
       run: 'kubectl apply -f kafka-deployment.yaml'
     -  run: 'kubectl wait deployment/kafka --for condition=available --timeout=300s'
     -  run: 'kubectl get pods'
- 
+
+    - id: 'deployment-mypod'
+      run: 'kubectl create secret docker-registry github-registry --docker-server="ghcr.io" --docker-username="felix.cdr@gmail.com" --docker-password="${{ secrets.PAT }}" --docker-email="felix.cdr@gmail.com" -o yaml --dry-run=client | kubectl apply -f -'
+    - run: 'kubectl apply -f deployment.yaml'
+    - run: 'kubectl get deployments'
+    - run: 'kubectl get pods'
+
