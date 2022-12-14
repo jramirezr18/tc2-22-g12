@@ -42,7 +42,7 @@ jobs:
           push: true
           tags: ghcr.io/felixcdr/tc2:latest
   deploy:
-    depends: verify-and-package
+    needs: verify-and-package
     runs-on: ubuntu-latest
     permissions:
       contents: 'read'
