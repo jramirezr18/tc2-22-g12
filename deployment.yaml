@@ -29,14 +29,14 @@ spec:
     spec:
       containers:
       - name: traceconsumer2
-        image: ghcr.io/felixcdr/tc2
+        image: ghcr.io/felixcdr/tc2:latest
         ports:
         - containerPort: 8080
         env:
         - name: spring.cloud.stream.kafka.binder.brokers
           value: "${KAFKA_SERVICE_SERVICE_HOST}:9092"
       imagePullSecrets:
-      - name: gitlab-registry
+      - name: github-registry
 ---
 apiVersion: v1
 kind: Service
